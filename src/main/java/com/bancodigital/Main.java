@@ -9,9 +9,10 @@ public class Main {
         Conta poupanca = new ContaPoupanca(venilton);
 
         cc.depositar(100);
+        ((ContaCorrente) cc).alterarLimiteChequeEspecial(10);
         cc.sacar(50);
         cc.transferir(50, poupanca);
-        cc.sacar(100);
+        cc.sacar(10);
         poupanca.transferir(100, cc);
 
         cc.imprimirExtrato();

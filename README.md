@@ -21,3 +21,5 @@ Foram feitas algumas melhorias no código, como criação de novos métodos e va
 - Criação do método saldoSuficiente na classe conta que verifica se o saldo é suficiente em referencia ao valor passado por parâmetro.
 - Criação do método debitar para ser utilizado nos métodos saque e transferência, permitindo assim informar qual tipo de transação está sendo feita na mensagem enviada quando o saldo é insuficiente.
 - Alteração nos métodos saque e transferência, validando se o saldo é suficiente, retornando uma mensagem caso não seja.
+- Inclusão do atributo limiteChequeEspecial na Classe ContaCorrente, com get e set deste atributo (utilizando a biblioteca Lombok).
+- Sobreposição do método getSaldo retornando o valor do saldo mais o valor do limite do cheque especial na classe Conta Corrente.

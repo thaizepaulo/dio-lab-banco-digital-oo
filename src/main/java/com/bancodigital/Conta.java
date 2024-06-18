@@ -21,14 +21,16 @@ public abstract class Conta implements IConta{
 
     @Override
     public void depositar(double valor) {
-        saldo += valor;
+        creditar(valor);
+        System.out.println("Deposito Realizado. Saldo: " + getSaldo());
     }
 
     private boolean saldoSuficiente(double valor) {
-        if (saldo < valor) {
-            return false;
-        }
-        return true;
+        return (getSaldo() > valor);
+    }
+
+    private void creditar(double valor) {
+        saldo += valor;
     }
 
     private void debitar(double valor) {
@@ -38,26 +40,28 @@ public abstract class Conta implements IConta{
     @Override
     public void sacar(double valor) {
         if (!saldoSuficiente(valor)) {
-            System.out.println("Saque não realizado: Saldo Insuficiente.");
+            System.out.println("Saque não realizado: Saldo Insuficiente: " + getSaldo());
             return;
         }
         saldo -= valor;
+        System.out.println("Saque Realizado. Saldo: " + getSaldo());
     }
 
     @Override
-    public void transferir(double valor, IConta contaDestino) {
+    public void transferir(double valor, Conta contaDestino) {
         if (!saldoSuficiente(valor)) {
-            System.out.println("Transferência não realizada. Saldo Insuficiente.");
+            System.out.println("Transferência não realizada. Saldo Insuficiente: " + getSaldo());
             return;
         }
         this.debitar(valor);
-        contaDestino.depositar(valor);
+        contaDestino.creditar(valor);
+        System.out.println("Transferência Realizada. Saldo: " + getSaldo());
     }
 
     protected void imprimirInfosComuns() {
-        System.out.println(String.format("Titular: %s", this.cliente.getNome()));
-        System.out.println(String.format("Agencia: %d", this.agencia));
-        System.out.println(String.format("Numero: %d", this.numero));
-        System.out.println(String.format("Saldo: %.2f", this.saldo));
+        System.out.println(String.format("Titular: %s", getCliente().getNome()));
+        System.out.println(String.format("Agencia: %d", getAgencia()));
+        System.out.println(String.format("Numero: %d", getNumero()));
+        System.out.println(String.format("Saldo: %.2f", getSaldo()));
     }
 }
