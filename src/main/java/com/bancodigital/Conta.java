@@ -20,26 +20,33 @@ public abstract class Conta implements IConta{
     }
 
     @Override
-    public void sacar(double valor) {
+    public void depositar(double valor) {
+        saldo += valor;
+    }
+
+    private boolean saldoSuficiente(double valor) {
         if (saldo < valor) {
+            return false;
+        }
+        return true;
+    }
+
+    private void debitar(double valor) {
+        saldo -= valor;
+    }
+
+    @Override
+    public void sacar(double valor) {
+        if (!saldoSuficiente(valor)) {
             System.out.println("Saque não realizado: Saldo Insuficiente.");
             return;
         }
         saldo -= valor;
     }
 
-    public void debitar(double valor) {
-        saldo -= valor;
-    }
-
-    @Override
-    public void depositar(double valor) {
-        saldo += valor;
-    }
-
     @Override
     public void transferir(double valor, IConta contaDestino) {
-        if (saldo < valor) {
+        if (!saldoSuficiente(valor)) {
             System.out.println("Transferência não realizada. Saldo Insuficiente.");
             return;
         }

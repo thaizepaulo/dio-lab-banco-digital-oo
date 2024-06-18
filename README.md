@@ -15,8 +15,9 @@ Foi feita a restruturação do código para permitir que o Maven faça a gestão
 ### Utilização de bibliotecas
 Foí utilizada a biblioteca Lombok para reduzir a verbosidade de código. 
 
-### Validações
-Foram feitas algumas validações de forma bem simples:
+### Alterações no código
+Foram feitas algumas melhorias no código, como criação de novos métodos e validações:
 
-- Saque: Valida se o saldo é suficiente e retorna uma mensagem caso não seja.
-- Transferência: Valida se o saldo é suficiente e retorna uma mensagem caso não seja.
+- Criação do método saldoSuficiente na classe conta que verifica se o saldo é suficiente em referencia ao valor passado por parâmetro.
+- Criação do método debitar para ser utilizado nos métodos saque e transferência, permitindo assim informar qual tipo de transação está sendo feita na mensagem enviada quando o saldo é insuficiente.
+- Alteração nos métodos saque e transferência, validando se o saldo é suficiente, retornando uma mensagem caso não seja.
