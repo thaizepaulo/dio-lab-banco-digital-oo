@@ -15,3 +15,8 @@ Foi feita a restruturação do código para permitir que o Maven faça a gestão
 ### Utilização de bibliotecas
 Foí utilizada a biblioteca Lombok para reduzir a verbosidade de código. 
 
+### Validações
+Foram feitas algumas validações de forma bem simples:
+
+- Saque: Valida se o saldo é suficiente e retorna uma mensagem caso não seja.
+- Transferência: Valida se o saldo é suficiente e retorna uma mensagem caso não seja.
